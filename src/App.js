@@ -20,7 +20,13 @@ class App extends Component {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hi, I am {this.state.name.firstName} {this.state.name.lastName}. I work at {this.state.company}</p>
         <button onClick={() => {
-          this.setState({name: {firstName: 'Justin', lastName: 'Wilcox'}});
+          this.setState(() => {
+            return {
+              name: {firstName: 'Justin', lastName: 'Willcockson'},
+            };
+          }, () => {
+            console.log(this.state);
+          });
         }}>Change name</button>
       </header>
     </div>
