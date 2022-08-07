@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       monsters: [],
+      searchField: ''
     };
     console.log('constructor');
   }
@@ -33,20 +34,21 @@ class App extends Component {
   // render is the template for the HTML..this runs 2nd. after the state changes, this runs again so the page is re-rendered with the new state.
   render() {
     console.log('render');
+
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    });
   return (
     <div className="App">
       <input className='search-box' type='search' placeholder='Search Monsters' onChange={(event) => {
-        const searchString = event.target.value.toLocaleLowerCase();
-        const filteredMonsters = this.state.monsters.filter((monster) => {
-          return monster.name.toLocaleLowerCase().includes(event.target.value);
-        });
-
+        const searchField = event.target.value.toLocaleLowerCase();
+        
         this.setState(() => {
-          return {monsters: filteredMonsters};
+          return { searchField };
         })
       }} />
       {
-        this.state.monsters.map((monster) => {
+        filteredMonsters.map((monster) => {
           return <h1 key={monster.id}>{monster.name}</h1>
         })
       }
