@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import CardList from './components/card-list/card-list.component';
 
 import logo from './logo.svg';
 import './App.css';
@@ -30,28 +31,37 @@ class App extends Component {
       )
     );
   }
+
+  onSearchChange = (event) => {
+    const searchField = event.target.value.toLocaleLowerCase();
+    this.setState(() => {
+      return { searchField };
+    });
+  }
   
   // render is the template for the HTML..this runs 2nd. after the state changes, this runs again so the page is re-rendered with the new state.
   render() {
     console.log('render');
 
-    const filteredMonsters = this.state.monsters.filter((monster) => {
-      return monster.name.toLocaleLowerCase().includes(this.state.searchField);
+    const {monsters, searchField } = this.state;
+    const { onSearchChange } = this;
+    const filteredMonsters = monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(searchField);
     });
   return (
     <div className="App">
-      <input className='search-box' type='search' placeholder='Search Monsters' onChange={(event) => {
-        const searchField = event.target.value.toLocaleLowerCase();
-        
-        this.setState(() => {
-          return { searchField };
-        })
-      }} />
-      {
+      <input 
+        className='search-box' 
+        type='search' 
+        placeholder='Search Monsters' 
+        onChange= { onSearchChange }
+       />
+      {/* {
         filteredMonsters.map((monster) => {
           return <h1 key={monster.id}>{monster.name}</h1>
         })
-      }
+      } */}
+      <CardList />
     </div>
   );
   }
