@@ -32,12 +32,12 @@ const App = () => {
   return(
     <div className='App'>
       <h1 className='app-title'>Monsters Rolodex</h1>  
-        <SearchBox 
-          className = 'monsters-search-box'
-          onChangeHandler = {onSearchChange} 
-          placeholder = 'Search Monsters' 
-        />
-        <CardList monsters={filteredMonsters} />
+      <SearchBox 
+        className = 'monsters-search-box'
+        onChangeHandler = {onSearchChange} 
+        placeholder = 'Search Monsters' 
+      />
+      <CardList monsters={filteredMonsters} />
     </div>
   );
 };
