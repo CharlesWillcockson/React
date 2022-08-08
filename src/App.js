@@ -4,6 +4,7 @@ import SearchBox from './components/search-box/search-box.component';
 import logo from './logo.svg';
 import './App.css';
 
+
 class App extends Component {
   // the constructor always runs first
   constructor() {
@@ -43,6 +44,8 @@ class App extends Component {
     });
   return (
     <div className="App">
+
+      <h1 className='app-title'>Monsters Rolodex</h1>  
       <SearchBox 
         className = 'search-box'
         onChangeHandler = {onSearchChange} 
