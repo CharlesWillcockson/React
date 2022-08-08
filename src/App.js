@@ -30,17 +30,17 @@ const App = () => {
     }
 
   return(
-    <div className="App">
+    <div className='App'>
       <h1 className='app-title'>Monsters Rolodex</h1>  
         <SearchBox 
-          className = 'search-box'
+          className = 'monsters-search-box'
           onChangeHandler = {onSearchChange} 
           placeholder = 'Search Monsters' 
         />
         <CardList monsters={filteredMonsters} />
     </div>
-  )
-}
+  );
+};
 
 //  -------Class Componoent---------
 // class App extends Component {
